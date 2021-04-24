@@ -1,0 +1,40 @@
+group 'com.umeng.umeng_common_sdk'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        jcenter()
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.aar','*.jar'], dir: 'libs')
+}

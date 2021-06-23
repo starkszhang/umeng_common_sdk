@@ -1,3 +1,12 @@
+##1.1.3
+-Android Example工程优化；Android依赖库迁移maven center；
+
+##1.1.2
+-Android Example工程添加release包混淆规则
+
+##1.1.1
+-Android依赖库改为线上maven形式
+
 ##1.1.0
 -优化描述，同步友盟+官方下载flutter插件
 

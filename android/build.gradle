@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    api  'com.umeng.umsdk:common:9.3.8'// 必选
-    api  'com.umeng.umsdk:asms:1.2.2'// 必选
-    api 'com.umeng.umsdk:apm:1.5.2' //友盟u-amp
+    api  'com.umeng.umsdk:common:9.4.4'// 必选
+    api  'com.umeng.umsdk:asms:1.4.1'// 必选
+    api  'com.umeng.umsdk:apm:1.5.2' //友盟u-amp
 }

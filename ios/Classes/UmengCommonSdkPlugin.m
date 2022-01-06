@@ -4,6 +4,7 @@
 #import <UMAPM/UMCrashConfigure.h>
 #import <UMAPM/UMLaunch.h>
 #import <UMAPM/UMAPMConfig.h>
+#import <UMCommonLog/UMCommonLogHeaders.h>
 
 @interface UMengflutterpluginForUMCommon : NSObject
 @end
@@ -34,6 +35,7 @@
             NSLog(@"UMAPM version:%@",[UMCrashConfigure getVersion]);
             //设置预定义DidFinishLaunchingEnd时间
             [UMLaunch setPredefineLaunchType:UMPredefineLaunchType_DidFinishLaunchingEnd];
+            [UMCommonLogManager setUpUMCommonLogManager];
     }
     else{
         resultCode = NO;

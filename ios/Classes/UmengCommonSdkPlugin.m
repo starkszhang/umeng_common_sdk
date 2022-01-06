@@ -2,6 +2,8 @@
 #import <UMCommon/UMConfigure.h>
 #import <UMCommon/MobClick.h>
 #import <UMAPM/UMCrashConfigure.h>
+#import <UMAPM/UMLaunch.h>
+#import <UMAPM/UMAPMConfig.h>
 
 @interface UMengflutterpluginForUMCommon : NSObject
 @end
@@ -15,6 +17,23 @@
         NSString* channel = arguments[2];
         [UMConfigure initWithAppkey:appkey channel:channel];
         //result(@"success");
+
+        //设置启动模块自定义函数开始
+            [UMLaunch beginLaunch:@"intUmeng"];
+            //初始化友盟SDK
+            UMAPMConfig* config = [UMAPMConfig defaultConfig];
+            config.crashAndBlockMonitorEnable = YES;
+            config.launchMonitorEnable = YES;
+            config.memMonitorEnable = YES;
+            config.oomMonitorEnable = YES;
+            config.networkEnable = YES;
+            [UMCrashConfigure setAPMConfig:config];
+            [UMConfigure initWithAppkey:appkey channel:channel];
+            //设置启动模块自定义函数开始
+            [UMLaunch endLaunch:@"intUmeng"];
+            NSLog(@"UMAPM version:%@",[UMCrashConfigure getVersion]);
+            //设置预定义DidFinishLaunchingEnd时间
+            [UMLaunch setPredefineLaunchType:UMPredefineLaunchType_DidFinishLaunchingEnd];
     }
     else{
         resultCode = NO;
@@ -68,9 +87,9 @@
         //result(@"success");
      }
     else if ([@"postError" isEqualToString:call.method]){
-        NSString* name= @"postError";
+        NSString* name= @"myUnity";
         NSString* reason = arguments[0];
-        NSString* stackTrace = arguments[1];
+        NSArray* stackTrace = [NSArray arrayWithObjects:arguments[1],nil];
         [UMCrashConfigure reportExceptionWithName:name reason:reason stackTrace:stackTrace];
     }
     else{

@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
+import com.umeng.umcrash.UMCrash;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -121,6 +122,9 @@ public class UmengCommonSdkPlugin implements FlutterPlugin, MethodCallHandler {
         case "reportError":
           reportError(args);
           break;
+        case "postError":
+          postError(args);
+          break;
         default:
           result.notImplemented();
           break;
@@ -207,5 +211,12 @@ public class UmengCommonSdkPlugin implements FlutterPlugin, MethodCallHandler {
     String error = (String)args.get(0);
     MobclickAgent.reportError(getContext(), error);
     android.util.Log.i("UMLog", "reportError:"+error);
+  }
+
+  private void postError(List args){
+    String error = (String)args.get(0);
+    String stack = (String)args.get(1);
+    UMCrash.generateCustomLog(error, stack);
+    android.util.Log.i("UMCrash", "postError:"+error);
   }
 }

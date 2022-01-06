@@ -1,6 +1,7 @@
 #import "UmengCommonSdkPlugin.h"
 #import <UMCommon/UMConfigure.h>
 #import <UMCommon/MobClick.h>
+#import <UMAPM/UMCrashConfigure.h>
 
 @interface UMengflutterpluginForUMCommon : NSObject
 @end
@@ -66,6 +67,11 @@
         NSLog(@"reportError API not existed ");
         //result(@"success");
      }
+    else if ([@"postError" isEqualToString:call.method]){
+        NSString* reason = arguments[0];
+        NSString* stackTrace = arguments[1];
+        [UMCrashConfigure reportExceptionWithName:"postError" reason:reason stackTrace:stackTrace];
+    }
     else{
         resultCode = NO;
     }

@@ -18,6 +18,7 @@ A new Flutter plugin.
   s.dependency 'Flutter'
   s.platform = :ios, '8.0'
   s.dependency 'UMCommon'
+  s.dependency 'UMAPM'
   s.dependency 'UMDevice'
   s.static_framework = true
 

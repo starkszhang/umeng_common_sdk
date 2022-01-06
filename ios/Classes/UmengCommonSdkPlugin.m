@@ -68,9 +68,10 @@
         //result(@"success");
      }
     else if ([@"postError" isEqualToString:call.method]){
+        NSString* name= @"postError";
         NSString* reason = arguments[0];
         NSString* stackTrace = arguments[1];
-        [UMCrashConfigure reportExceptionWithName:"postError" reason:reason stackTrace:stackTrace];
+        [UMCrashConfigure reportExceptionWithName:name reason:reason stackTrace:stackTrace];
     }
     else{
         resultCode = NO;
